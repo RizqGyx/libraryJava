@@ -1,0 +1,33 @@
+cd ../factory
+
+touch $1'Migration'.java
+
+echo '
+package com.factory;
+import java.util.LinkedList;
+public class '$1'Migration extends Migration{
+
+    public static LinkedList<Field> fields = new LinkedList<>();
+
+
+  '$1'Migration (){
+      super("'$1'", fields);
+  }
+
+  @Override
+  public void tableBuilder() {
+    //Create field
+    Field one = new Field();
+    //Name of field
+    one.name = "name";
+    //Type of field
+    one.type = "varchar";
+    //size of field
+    one.size = 255;
+    //add field
+    fields.add(one);
+
+    //You can add another field
+  }
+}
+' > $1'Migration'.java
